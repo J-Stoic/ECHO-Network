@@ -13,36 +13,6 @@ export default function SuccessPage() {
     }
   }, []);
 
-  const handleDeposit = async () => {
-    setLoading(true);
-
-    try {
-      const response = await fetch('/api/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ amount: 1000 }),
-      });
-
-      const data = await response.json();
-      console.log('Stripe response:', data); // log the response for debugging
-
-      if (data.url) {
-        localStorage.setItem('wallet', String(balance + 1000));
-        window.location.assign(data.url);
-      } else {
-        console.error('No URL returned from Stripe API');
-        alert('Failed to redirect to checkout.');
-      }
-    } catch (err) {
-      console.error('Deposit error:', err);
-      alert('Something went wrong during deposit.');
-    }
-
-    setLoading(false);
-  };
-
   return (
     <main className="min-h-screen flex flex-col items-center justify-center p-10 gap-4">
       <h1 className="text-3xl font-bold text-green-600">Deposit Successful 🎉</h1>
