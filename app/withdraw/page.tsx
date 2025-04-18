@@ -61,7 +61,7 @@ export default function WithdrawPage() {
           className="w-full bg-purple-600 text-white px-6 py-3 rounded hover:bg-purple-700 transition disabled:opacity-50"
           disabled={loading}
         >
-          {loading ? 'Processing...' : 'Withdraw'}
+          {loading ? 'One sec...' : 'Withdraw Funds'}
         </button>
       </div>
     </main>
