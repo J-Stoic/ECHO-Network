@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 export default function WithdrawPage() {
   const [balance, setBalance] = useState(0);
   const [amount, setAmount] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
 
@@ -28,11 +29,13 @@ export default function WithdrawPage() {
       return;
     }
 
+    setLoading(true);
     const newBalance = balance - withdrawAmount;
     localStorage.setItem('wallet', String(newBalance));
     setBalance(newBalance);
     setAmount('');
     alert(`$${parsed.toFixed(2)} withdrawn.`);
+    setLoading(false);
 
     router.push('/');
   };
