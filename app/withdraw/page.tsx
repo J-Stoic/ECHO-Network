@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 export default function WithdrawPage() {
   const [balance, setBalance] = useState(0);
   const [amount, setAmount] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // ✅ this is what was missing
 
   const router = useRouter();
 
