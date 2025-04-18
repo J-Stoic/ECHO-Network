@@ -6,6 +6,7 @@ export default function Home() {
   const [balance, setBalance] = useState(0);
   const [amount, setAmount] = useState('');
   const [loading, setLoading] = useState(false);
+  
 
   useEffect(() => {
     const stored = localStorage.getItem('wallet');
@@ -26,7 +27,7 @@ export default function Home() {
     }
 
     setLoading(true);
-
+ 
     try {
       const response = await fetch('/api/create-checkout-session', {
         method: 'POST',
@@ -50,7 +51,7 @@ export default function Home() {
       console.error('Deposit error:', err);
       alert('Something went wrong during deposit.');
     }
-
+ 
     setLoading(false);
   };
 
